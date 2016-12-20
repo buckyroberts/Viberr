@@ -126,7 +126,8 @@ def index(request):
     if not request.user.is_authenticated():
         return render(request, 'music/login.html')
     else:
-        albums = Album.objects.filter(user=request.user)
+        # albums = Album.objects.filter(user=request.user)
+        albums = Album.objects.all()
         song_results = Song.objects.all()
         query = request.GET.get("q")
         if query:
