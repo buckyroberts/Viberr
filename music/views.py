@@ -167,7 +167,7 @@ def login_user(request):
             else:
                 return render(request, 'music/login.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, 'music/login.html', {'error_message': 'Invalid login'})
+            return render(request, 'music/login.html', {'error_message': 'Invalid username or password'})
     return render(request, 'music/login.html')
 
 
