@@ -74,7 +74,7 @@ def create_song(request, album_id):
 def delete_album(request, album_id):
     album = Album.objects.get(pk=album_id)
     album.delete()
-    albums = Album.objects.filter(user=request.user)
+    albums = Album.objects.all()
     return render(request, 'music/index.html', {'albums': albums})
 
 
