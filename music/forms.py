@@ -20,6 +20,7 @@ class SongForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.CharField(widget=forms.EmailInput)
 
     class Meta:
         model = User
