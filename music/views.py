@@ -78,7 +78,6 @@ def delete_album(request, album_id):
     return render(request, 'music/index.html', {'albums': albums})
 
 
-
 def delete_song(request, album_id, song_id):
     album = get_object_or_404(Album, pk=album_id)
     song = Song.objects.get(pk=song_id)
@@ -198,7 +197,7 @@ def songs(request, filter_by):
     else:
         try:
             song_ids = []
-            for album in Album.objects.filter(user=request.user):
+            for album in Album.objects.all():
                 for song in album.song_set.all():
                     song_ids.append(song.pk)
             users_songs = Song.objects.filter(pk__in=song_ids)
