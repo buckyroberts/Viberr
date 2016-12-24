@@ -127,7 +127,6 @@ def index(request):
     if not request.user.is_authenticated():
         return render(request, 'music/login.html')
     else:
-        # albums = Album.objects.filter(user=request.user)
         albums = Album.objects.all()
         song_results = Song.objects.all()
         query = request.GET.get("q")
@@ -164,7 +163,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                albums = Album.objects.filter(user=request.user)
+                albums = Album.objects.all()
                 return render(request, 'music/index.html', {'albums': albums})
             else:
                 return render(request, 'music/login.html', {'error_message': 'Your account has been disabled'})
