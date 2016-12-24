@@ -74,7 +74,7 @@ def create_song(request, album_id):
 def delete_album(request, album_id):
     album = Album.objects.get(pk=album_id)
     album.delete()
-    albums = Album.objects.filter(user=request.user)
+    albums = Album.objects.all()
     return render(request, 'music/index.html', {'albums': albums})
 
 
@@ -126,7 +126,6 @@ def index(request):
     if not request.user.is_authenticated():
         return render(request, 'music/login.html')
     else:
-        # albums = Album.objects.filter(user=request.user)
         albums = Album.objects.all()
         song_results = Song.objects.all()
         query = request.GET.get("q")
@@ -163,7 +162,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                albums = Album.objects.filter(user=request.user)
+                albums = Album.objects.all()
                 return render(request, 'music/index.html', {'albums': albums})
             else:
                 return render(request, 'music/login.html', {'error_message': 'Your account has been disabled'})
@@ -198,7 +197,7 @@ def songs(request, filter_by):
     else:
         try:
             song_ids = []
-            for album in Album.objects.filter(user=request.user):
+            for album in Album.objects.all():
                 for song in album.song_set.all():
                     song_ids.append(song.pk)
             users_songs = Song.objects.filter(pk__in=song_ids)
