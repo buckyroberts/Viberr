@@ -2,3 +2,4 @@
 db.*
 */__pycache__/
 media/
+*/migrations/
