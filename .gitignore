@@ -1,1 +1,3 @@
-.idea
+.gitignore
+.idea/
+__pycache__/
