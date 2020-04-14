@@ -11,7 +11,7 @@ IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
 
 
 def create_album(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return render(request, 'music/login.html')
     else:
         form = AlbumForm(request.POST or None, request.FILES or None)
@@ -86,7 +86,7 @@ def delete_song(request, album_id, song_id):
 
 
 def detail(request, album_id):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return render(request, 'music/login.html')
     else:
         user = request.user
@@ -123,7 +123,7 @@ def favorite_album(request, album_id):
 
 
 def index(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return render(request, 'music/login.html')
     else:
         albums = Album.objects.filter(user=request.user)
@@ -192,7 +192,7 @@ def register(request):
 
 
 def songs(request, filter_by):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return render(request, 'music/login.html')
     else:
         try:
