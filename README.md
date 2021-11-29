@@ -1,4 +1,4 @@
-![](http://i.imgur.com/YiFZyuW.png)
+
 
 # What is Viberr?
 
